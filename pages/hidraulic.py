@@ -18,7 +18,7 @@ if previous_button:
       st.switch_page("fnl.py")
 
 with st.container(border=True):
-	st.markdown(motor_l)
+	st.markdown(f"**{motor_l}**")
 	col5, col6 = st.columns(2)
 	with col5:
 		central_current = st.selectbox(label=central_current_l, options=central_currents)

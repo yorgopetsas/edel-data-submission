@@ -21,16 +21,16 @@ def render_selectbox(field_options, field_value, field_label):
 
 with st.container(border=False):
 	st.image(f'{header_url}', width=700)
-	
+
 with st.container(border=True):
 	st.write(f"**{general_cointainer_label}**")
-	col1, col2 = st.columns(2)
 
+	col1, col2 = st.columns(2)
 	with col1:
-		st.session_state.client = st.text_input(label=client_l, value=st.session_state.client)
+		st.session_state.client = st.text_input(label=client_lo, value=st.session_state.client)
 		st.session_state.reference = st.text_input(label=reference_l, value=st.session_state.reference)
-		render_selectbox(form_types, "form_type", form_type_l)
-		render_selectbox(man_types, "man_type", man_type_l)
+		render_selectbox(form_types, "form_type", form_type_lo)
+		render_selectbox(man_types, "man_type", man_type_lo)
 
 	with col2:
 		col3, col4 = st.columns(2)
@@ -38,16 +38,24 @@ with st.container(border=True):
 			st.session_state.date = st.date_input(label=date_l)
 		with col4:
 			st.session_state.delivery_date = st.date_input(label=delivery_date_l)
-		render_selectbox(stages, "stage", stage_l)
-		st.session_state.stops = st.text_input(label=stops_l, value=st.session_state.stops)
+		render_selectbox(stages, "stage", stage_lo)
+		st.session_state.stops = st.text_input(label=stops_lo, value=st.session_state.stops)
 		if st.session_state.man_type == "Eléctrica":
-			render_selectbox(motor_types, "motor_type", motor_type_l)
+			render_selectbox(motor_types, "motor_type", motor_type_lo)
 
-next_button = st.button(label=next_button_l, use_container_width=True)
-if next_button:
-	if st.session_state.man_type == man_types[1]:
-		st.switch_page("pages/electric.py")
-	elif st.session_state.man_type == man_types[2]:
-		st.switch_page("pages/hidraulic.py")
+if not st.session_state.client or st.session_state.form_type == form_types[0] or st.session_state.man_type == man_types[0] or st.session_state.stage == stages[0] or not st.session_state.stops:
+	with st.container(border=True):
+		st.write(f"Por favor, rellene todos los campos obligatorios, marcados con 🚩 ")
+elif st.session_state.man_type == man_types[1] and st.session_state.motor_type == motor_types[0]:
+	with st.container(border=True):
+		st.write(f"Por favor, rellene todos los campos obligatorios, marcados con 🚩 ")
+else:
+	# if session_state.man_type == "Eléctrica"
+	next_button = st.button(label=next_button_l, use_container_width=True)
+	if next_button:
+		if st.session_state.man_type == man_types[1]:
+			st.switch_page("pages/electric.py")
+		elif st.session_state.man_type == man_types[2]:
+			st.switch_page("pages/hidraulic.py")
 
 

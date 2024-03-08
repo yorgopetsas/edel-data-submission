@@ -10,7 +10,7 @@ with st.container(border=True):
 	st.write(f"{form_type_l}: **{st.session_state.form_type}**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{stage_l}: **{st.session_state.stage}**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{stops_l}: **{st.session_state.stops}**")
 	st.write(f"{man_type_l}: **{st.session_state.man_type}**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{motor_type_l}: **{st.session_state.motor_type}**")
 	st.write(f"{client_l}: **{st.session_state.client}**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{date_l}: **{st.session_state.date}**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{delivery_date_l}: **{st.session_state.delivery_date}**")
-	st.write(f"{reference_l}: **{st.session_state.reference}**")
+	st.write(f"{reference_l}: {'**' + st.session_state.reference + '**' if st.session_state.reference else ''}")
 
 temp_stops = int(st.session_state.stops)
 
@@ -21,7 +21,7 @@ if previous_button:
 with st.container(border=True):
 	motor_type = st.session_state.motor_type
 	if motor_type == motor_types[1]:
-		st.markdown(F"{motor_l} **{motor_types[1]}**")
+		st.markdown(f"**{motor_l}** **{motor_types[1]}**")
 		col3, col4 = st.columns(2)
 		with col3:
 			motor_current = st.selectbox(label=motor_current_l, options=motor_currents)
@@ -36,7 +36,7 @@ with st.container(border=True):
 			encoder_model = st.text_input(label=encoder_model_l)
 
 	elif motor_type == motor_types[2]:
-		st.markdown(F"{motor_l} **{motor_types[2]}**")
+		st.markdown(f"**{motor_l}** **{motor_types[2]}**")
 		colg, colg2 = st.columns(2)
 		with colg:
 			motor_current = st.selectbox(label=motor_current_l, options=motor_currents)

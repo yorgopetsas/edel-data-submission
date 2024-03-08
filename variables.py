@@ -4,19 +4,22 @@
 ### Hidraulic Motor
 ###########################################
 ## General
-form_types = ["Elegir", "Pedido", "Oferta"]
-stages = ["Elegir", "I.E.P. Completa", "Media I.E.P. Cabina", "Solo Maniobra"]
+form_types = ["Elegir:", "Pedido", "Oferta"]
+stages = ["Elegir:", "I.E.P. Completa", "Media I.E.P. Cabina", "Solo Maniobra"]
 header_url = "img/header-k2-advanced-es.png"
 submittion_confirmation = 'Form submitted! Data has been saved as CSV and PDF.'
 
 ### General Labels
 client_l="Cliente"
+client_lo="Cliente 🚩"
 date_l="Fecha"
 reference_l="Referencia"
 delivery_date_l="Fecha Entrega"
 submit_button_l = "Enviar"
 form_type_l = "Tipo de Solicitud"
+form_type_lo = "Tipo de Solicitud 🚩"
 stage_l = "Se Solicita"
+stage_lo = "Se Solicita 🚩"
 general_cointainer_label = "Información General"
 edit_general_info_l = "Haga click aquí para editar la información general"
 
@@ -25,7 +28,7 @@ next_button_l = "Siguiente Paso"
 previous_button_l = "Paso Anterior"
 
 ### Mensajes
-warning = "**Rellene todos los campos para poder enviar la solicitus.**"
+# warning = "**Rellene todos los campos para poder enviar la solicitus.**"
 comments_l = "Comentarios"
 
 ## Maniobra Type
@@ -33,14 +36,16 @@ man_types = ["Elegir:", "Eléctrica", "Hidráulica"]
 
 ### Maniobra Type Labels
 man_type_l = "Tipo de Maniobra"
+man_type_lo = "Tipo de Maniobra 🚩"
 
 ## Motor
 motor_types = ["Elegir:", "Gearless", "Geared"]
 motor_currents = ["Elegir:", "230V", "400V"]
 
 ### Motor Labels
-motor_l = "**MOTOR**"
+motor_l = "MOTOR"
 motor_type_l = "Tipo de Motor"
+motor_type_lo = "Tipo de Motor 🚩"
 motor_current_l = "Tensión de Motor"
 consumo_l = "Consumo A"
 potencia_motor_cv_l = "Potencia Motor CV"
@@ -88,7 +93,7 @@ restate_l = "Rescate"
 ### Maniobra Hidraulic 
 wardrobes = ["Elegir:", "CCM", "SCM Dentro Central"]
 renivelations = ["Elegir:", "Puerta Abierta", "Puerta Cerrada"]
-starterzs = ["Elegir", "Suministrar", "Existente"]
+starterzs = ["Elegir:", "Suministrar", "Existente"]
 
 ### EXTRAS EN MANIOBRA MISSING ###
 
@@ -98,14 +103,14 @@ renivelation_l  = "Renivelación"
 starterz_l = "Arrancador"
 
 ## Electric Installation
-installations = ["Elegir", "Obra Nueva", "Reforma", "Reforma Integral"]
-standarts = ["Elegir", "EN 81.16", "EN 81.20/50" ]
-standarts_additional = ["Elegir", "En 81.71 CAT. 1", "En 81.71 CAT. 2", "En 81.72", "En 81.73"]
-line_currents = ["Elegir", "230V", "400V"]
-installation_types = ["Elegir", "Hilo a Hilo", "CAN-BUS MIXTA (cabina hilo a hilo exteriores)", "CAN-BUS TOTAL (cabina y exteriores)"]
-calls_types = ["Elegir", "Universal", "Selectivo Bajada", "Subida / Bajada" ]
-positions_1s = ["Elegir", "Kit de Imanes", "Kit Fotorruptor", "Kit encoder Hueco"]
-positions_2s = ["Elegir", "Kit Biestables", "Paradores FC"]
+installations = ["Elegir:", "Obra Nueva", "Reforma", "Reforma Integral"]
+standarts = ["Elegir:", "EN 81.16", "EN 81.20/50" ]
+standarts_additional = ["Elegir:", "En 81.71 CAT. 1", "En 81.71 CAT. 2", "En 81.72", "En 81.73"]
+line_currents = ["Elegir:", "230V", "400V"]
+installation_types = ["Elegir:", "Hilo a Hilo", "CAN-BUS MIXTA (cabina hilo a hilo exteriores)", "CAN-BUS TOTAL (cabina y exteriores)"]
+calls_types = ["Elegir:", "Universal", "Selectivo Bajada", "Subida / Bajada" ]
+positions_1s = ["Elegir:", "Kit de Imanes", "Kit Fotorruptor", "Kit encoder Hueco"]
+positions_2s = ["Elegir:", "Kit Biestables", "Paradores FC"]
                  
 ### Electric Installation Labels
 installation_title = "**INSTALACIÓN ELÉCTRICA**"
@@ -114,6 +119,7 @@ standart_l = "Nomrativa"
 standart_additional_l = "Otras Normas"
 line_current_l = "Tensión Linea"
 stops_l = "Numero de Paradas"
+stops_lo = "Numero de Paradas 🚩"
 sec_stop_l = "Sec Pisos"
 installation_type_l = "Tipo de Instalación"
 calls_type_l = "Tipo de llamadas"
@@ -306,8 +312,8 @@ inductive_loop_l = "Bucle inductivo"
 location_l = "Ubicación"
 
 # Initiations
-stage = 0
-form_type = 0
+stage = ""
+form_type = ""
 motor_finished = 0
 installation_finished = 0
 cabin_finished = 0
@@ -320,13 +326,13 @@ plate_finished = 0
 ext_plate_finished = 0
 norm_finished = 0
 submit_button = 0
-client = 0
+client = ""
 central_current = 0 
 motor_current = 0
-reference = 0
-date = 0 
-delivery_date = 0 
-man_type = 0 
+reference = ""
+date = ""
+delivery_date = ""
+man_type = ""
 central_current = 0 
 potencia_central_cv = 0 
 potencia_central_kw = 0 
@@ -343,8 +349,8 @@ valve_pressure_emergency = 0
 wardrobe = 0 
 renivelation = 0 
 starter = 0 
-starterz = 0 
-motor_type = 0 
+starterz = 0
+motor_type = "" 
 potencia_motor_cv = 0 
 potencia_motor_kw = 0 
 consumo = 0 
@@ -360,7 +366,7 @@ restate = 0
 installation = 0 
 line_current = 0 
 standart = 0 
-stops = 0
+stops = ""
 installation_type = 0
 calls_type = 0
 positions_1 = 0
@@ -421,16 +427,10 @@ column_fixture_bottom = 0
 middle_fixture_distance = 0 
 emergency_light = 0 
 display_type = 0 
-
 double_contact_alarm = 0
 door_closer = 0
 button_phone = 0
 stop_button = 0
-
-
-
-
-
 emergency_light_color = 0 
 button_type = 0 
 braille_button = 0
