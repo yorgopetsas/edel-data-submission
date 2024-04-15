@@ -1,6 +1,10 @@
 import streamlit as st
 from dictionary import *
+with open('./files/wave.css') as f:
+    css = f.read()
 
+st.markdown(f'<style>{css}</style>', unsafe_allow_html=True)
+	
 def render_selectbox(field_options, field_value, field_label):
 	selected_value = st.selectbox(label=f"**{field_label}**", options=field_options, index=field_options.index(st.session_state.get(field_value, field_options[0])))
 
@@ -234,7 +238,7 @@ with st.container(border=True):
 		if boarding == 1:
 			floors1, floors2, floors3 = st.columns([1,1,1])
 			with floors1:
-				st.session_state.dynamic_fields['names'][i] = st.text_input(f"NIVEL {i+1}", placeholder="NIVEL", value=st.session_state.dynamic_fields['names'][i], key=f"name_{i}")
+				st.session_state.dynamic_fields['names'][i] = st.text_input(f"NIVEL {i+1}", placeholder="DENOMINACIÓN", value=st.session_state.dynamic_fields['names'][i], key=f"name_{i}")
 			with floors2:
 				st.session_state.dynamic_fields['distances'][i] = st.text_input(f"DISTANCIA {i+1}", value=st.session_state.dynamic_fields ['distances'][i],  placeholder="DISTANCIA", key=f"distance_{i}", label_visibility="hidden")
 			with floors3:
@@ -243,7 +247,7 @@ with st.container(border=True):
 		elif boarding == 2:
 			floors1, floors2, floors3, floors4, floors5 = st.columns([1,1,0.3,0.3,1])
 			with floors1:
-				st.session_state.dynamic_fields['names'][i] = st.text_input(f"NIVEL {i+1}", placeholder="NIVEL", value=st.session_state.dynamic_fields['names'][i], key=f"name_{i}")
+				st.session_state.dynamic_fields['names'][i] = st.text_input(f"NIVEL {i+1}", placeholder="DENOMINACIÓN", value=st.session_state.dynamic_fields['names'][i], key=f"name_{i}")
 			with floors2:
 				st.session_state.dynamic_fields['distances'][i] = st.text_input(f"DISTANCIA {i+1}", value=st.session_state.dynamic_fields ['distances'][i],  placeholder="DISTANCIA", key=f"distance_{i}", label_visibility="hidden")
 			with floors3:
