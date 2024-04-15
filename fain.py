@@ -343,7 +343,9 @@ with st.container(border=True):
 			pass
 		with huida6:
 			st.image(f'{foso_wide_url}', width=159)
-		
+
+submit_button = st.button(label=submit_button_l)
+
 	# 		comments_h = st.text_area(comments_heights_l, key='comments_h')
 
 # import pandas as pd
