@@ -6,7 +6,7 @@ building_url = "img/building-a.png"
 building_a_b_url = "img/building-a-b.png"
 
 building_aa_b_url = "img/building-aa-b.png"
-building_a_bb_url = "img/building-a-bb.png"
+building_a_bb_url = "img/building-a-bb.png"     
 building_aa_bb_url = "img/building-aa-bb.png"
 
 building_a_b_c_url = "img/building-a-b-c.png"
@@ -19,8 +19,13 @@ building_a_bb_cc_url = "img/building-a-bb-cc.png"
 building_aa_bb_cc_url = "img/building-aa-bb-cc.png"
 
 building_url = "img/building-a.png"
+
+foso_url = "img/foso.png"
+foso_2_url = "img/foso-2.png"
+foso_wide_url = "img/foso-wide.png"
+
 roof_url = "img/roof-wide.png"
-foso_url = "img/foso-wide.png"
+
 building_active_url = "building-active.png"
 
 reference_l="NUMERO DE ORDEN (SAP)"

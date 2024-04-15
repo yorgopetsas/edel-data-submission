@@ -44,7 +44,6 @@ with st.container(border=True):
 	norm = st.selectbox(label=norm_l, options=norms)
 
 	#Aqui puedo mejorar haciendo que pida / proponga secuencia segun el numero de paradas
-	
 
 with st.container(border=True):
 	st.write(f"**{central_l}**")
@@ -320,7 +319,7 @@ with st.container(border=True):
 		with huida4:
 			pass
 		with huida5:
-			st.image(f'{foso_url}', width=159)
+			st.image(f'{foso_2_url}', width=159)
 
 	elif boarding == 3:
 
@@ -336,7 +335,7 @@ with st.container(border=True):
 		with huida5:
 			pass
 		with huida6:
-			st.image(f'{foso_url}', width=159)
+			st.image(f'{foso_wide_url}', width=159)
 		
 	# 		comments_h = st.text_area(comments_heights_l, key='comments_h')
 
