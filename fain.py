@@ -30,7 +30,7 @@ with st.container(border=True):
 #Datos Generales
 with st.container(border=True):
 	st.write(f"**{data_l}**")
-	col1, col2, col3, col4 = st.columns(4)
+	col1, col2, col3 = st.columns(3)
 	min_floors = 1
 	with col1:
 		quantity = st.number_input(label=quantity_l, min_value=1, value=min_floors)
@@ -42,9 +42,9 @@ with st.container(border=True):
 		boarding = st.number_input(label=boarding_l, min_value=1, max_value=3, value=1)
 	with col3:
 		man_type = st.selectbox(label=man_type_l, options=man_types)
-		secuencia = st.text_input(label=secuencia_l)
-	with col4:
+		# secuencia = st.text_input(label=secuencia_l)
 		connection = st.selectbox(label=connection_l, options=connections)
+	# with col4:
 	
 	norm = st.selectbox(label=norm_l, options=norms)
 
