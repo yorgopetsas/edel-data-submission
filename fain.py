@@ -7,6 +7,9 @@ def render_selectbox(field_options, field_value, field_label):
 with st.container(border=False):
 	st.image(f'{header_url}', width=700)
 
+if 'stops' not in st.session_state:
+    st.session_state.stops = 2
+
 # Informacion General
 with st.container(border=True):
 	st.write(f"**{general_cointainer_label}**")
@@ -31,7 +34,9 @@ with st.container(border=True):
 	min_floors = 1
 	with col1:
 		quantity = st.number_input(label=quantity_l, min_value=1, value=min_floors)
-		stops = st.number_input(label=stops_l, min_value=2, max_value=32, value=stops)
+		# stops = st.number_input(label=stops_l, min_value=2, max_value=32, value=stops)
+		stops = st.number_input(label=stops_l, min_value=2, max_value=32, value=st.session_state.stops, key="stops1")
+		st.session_state.stops = stops
 	with col2:
 		type = st.selectbox(label=type_l, options=types)
 		boarding = st.number_input(label=boarding_l, min_value=1, max_value=3, value=1)
@@ -172,8 +177,10 @@ with st.container(border=True):
 				st.session_state.dynamic_fields[key] = st.session_state.dynamic_fields[key][:num_fields]
 
 	st.markdown(heights_title_l)
-	stops = st.number_input(label="PARADAS", min_value=0, max_value=32, value=stops)
-
+	# stops = st.number_input(label="PARADAS", min_value=0, max_value=32, value=stops)
+	stops = st.number_input(label="PARADAS", min_value=0, max_value=32, value=st.session_state.stops, key="stops2")
+	st.session_state.stops = stops
+	
 	num_fields = int(stops)
 	if 'dynamic_fields' not in st.session_state:
 		st.session_state.dynamic_fields = {'distances': [''] * num_fields, 'names': [''] * num_fields, 'a': [0] * num_fields, 'b': [0] * num_fields, 'c': [0] * num_fields}
