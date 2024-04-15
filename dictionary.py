@@ -102,6 +102,9 @@ leva_l3 = "LEVA 3"
 floor_door_l3 = "PUERTAS EMBARQUE 3"
 ####
 
+submit_button_l = "Enviar"
+
+
 fotocells = ["Elegir:", "DE BOTON", "CORTINA"]
 fotocell_l = "FOTOCÉLULA"
 fotocell_current_l = "TENSIÓN FOTOCÉLULA"
