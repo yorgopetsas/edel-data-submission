@@ -1,6 +1,7 @@
 import streamlit as st
 from dictionary import *
-with open('./files/wave.css') as f:
+
+with open('./files/new.css') as f:
     css = f.read()
 
 st.markdown(f'<style>{css}</style>', unsafe_allow_html=True)
