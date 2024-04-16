@@ -13,8 +13,8 @@ def render_selectbox(field_options, field_value, field_label):
 with st.container(border=False):
 	st.image(f'{header_url}', width=700)
 
-# if 'stops' not in st.session_state:
-#     st.session_state.stops = 2
+if 'parado' not in st.session_state:
+    st.session_state.parado = 0
 
 # Informacion General
 with st.container(border=True):
@@ -26,20 +26,22 @@ with st.container(border=True):
 	with col2:
 		cv = st.selectbox(label=cv_l, options=cvs)
 	with col3:
-		st.write("")
-		st.write("")
-		parado = st.toggle('PARADO')
-	
+		delivery = st.selectbox(label=delivery_l, options=deliveries)
 	zcol1, zcol2, zcol3  = st.columns(3)
 	with zcol1:
 		date = st.date_input(label=date_l)
+
 	with zcol2:
-		if parado:
-			delivery_date = st.date_input(label=delivery_date_l, disabled=True)
+		st.write("")
+		st.write("")
+		st.session_state.parado = st.toggle('ASCENSOR PARADO')		
+
+	with zcol3:
+		if st.session_state.parado:
+			st.image(f'{urgente_url}')
 		else: 
 			delivery_date = st.date_input(label=delivery_date_l)
-	with zcol3:
-		delivery = st.selectbox(label=delivery_l, options=deliveries)
+
 
 	if delivery == deliveries[3]:
 			other_address = st.text_input(other_address_l, key='other_address')	
@@ -256,7 +258,10 @@ with st.container(border=True):
 		with huida2:
 			pass
 		with huida3:
-			st.image(f'{roof_url}', width=159)
+			if situation == situations[3]:
+				st.image(f'{roof_cp_url}', width=159)
+			else:
+				st.image(f'{roof_url}', width=159)
 			
 	elif boarding == 2:
 		huida1, huida2, huida3, huida4, huida5  = st.columns([1,1,0.3,0.3,1])
@@ -269,7 +274,10 @@ with st.container(border=True):
 		with huida4:
 			pass
 		with huida5:
-			st.image(f'{roof_url}', width=159)
+			if situation == situations[3]:
+				st.image(f'{roof_cp_url}', width=159)
+			else:
+				st.image(f'{roof_url}', width=159)
 
 	elif boarding == 3:
 
@@ -285,7 +293,10 @@ with st.container(border=True):
 		with huida5:
 			pass
 		with huida6:
-			st.image(f'{roof_url}', width=159)
+			if situation == situations[3]:
+				st.image(f'{roof_cp_url}', width=159)
+			else:
+				st.image(f'{roof_url}', width=159)
 
 	for i in reversed(range(num_fields)):
 		if boarding == 1:
@@ -371,6 +382,8 @@ with st.container(border=True):
 			pass
 		with huida3:
 			st.image(f'{foso_url}', width=159)
+			if situation == situations[3]:
+				st.image(f'{foso_cmi_url}', width=159)
 			
 	elif boarding == 2:
 		huida1, huida2, huida3, huida4, huida5  = st.columns([1,1,0.3,0.3,1])
@@ -384,6 +397,8 @@ with st.container(border=True):
 			pass
 		with huida5:
 			st.image(f'{foso_2_url}', width=159)
+			if situation == situations[3]:
+				st.image(f'{foso_cmi_url}', width=159)
 
 	elif boarding == 3:
 
@@ -400,7 +415,9 @@ with st.container(border=True):
 			pass
 		with huida6:
 			st.image(f'{foso_wide_url}', width=159)
-	
+			if situation == situations[3]:
+				st.image(f'{foso_cmi_url}', width=159)
+
 	with st.container(border=True):
 		st.markdown("DISTANCIAS")
 		do1, do2, do3, do4, do5 = st.columns(5)
