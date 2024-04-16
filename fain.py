@@ -1,5 +1,6 @@
 import streamlit as st
 from dictionary import *
+from datetime import datetime
 
 with open('./new.css') as f:
     css = f.read()
@@ -19,22 +20,36 @@ with st.container(border=False):
 with st.container(border=True):
 	st.write(f"**{general_cointainer_label}**")
 
-	col1, col2 = st.columns(2)
+	col1, col2, col3 = st.columns([2, 1, 1])
 	with col1:
 		reference = st.text_input(label=reference_l, value=reference)
-
 	with col2:
-		col3, col4 = st.columns(2)
-		with col3:
+		cv = st.selectbox(label=cv_l, options=cvs)
+	with col3:
+		st.write("")
+		st.write("")
+		parado = st.toggle('PARADO')
+	
+	zcol1, zcol2, zcol3  = st.columns(3)
+	with zcol1:
+		date = st.date_input(label=date_l)
+	with zcol2:
+		if parado:
+			delivery_date = st.date_input(label=delivery_date_l, disabled=True)
+		else: 
 			delivery_date = st.date_input(label=delivery_date_l)
-		with col4:
-			date = st.date_input(label=date_l)
+	with zcol3:
+		delivery = st.selectbox(label=delivery_l, options=deliveries)
+
+	if delivery == deliveries[3]:
+			other_address = st.text_input(other_address_l, key='other_address')	
+
 	comments = st.text_area(comments_l, key='comments')	
 
 #Datos Generales
 with st.container(border=True):
 	st.write(f"**{data_l}**")
-	col1, col2, col3 = st.columns(3)
+	col1, col2, col3= st.columns(3)
 	min_floors = 1
 	with col1:
 		quantity = st.number_input(label=quantity_l, min_value=1, value=min_floors)
@@ -48,6 +63,7 @@ with st.container(border=True):
 		man_type = st.selectbox(label=man_type_l, options=man_types)
 		# secuencia = st.text_input(label=secuencia_l)
 		connection = st.selectbox(label=connection_l, options=connections)
+	
 	norm = st.selectbox(label=norm_l, options=norms)
 	#Aqui puedo mejorar haciendo que pida / proponga secuencia segun el numero de paradas
 
@@ -270,7 +286,7 @@ with st.container(border=True):
 		if boarding == 1:
 			floors1, floors2, floors3 = st.columns([1,1,1])
 			with floors1:
-				st.session_state.dynamic_fields['names'][i] = st.text_input(f"NIVEL {i+1}", placeholder="DENOMINACIÓN", value=st.session_state.dynamic_fields['names'][i], key=f"name_{i}")
+				st.session_state.dynamic_fields['names'][i] = st.text_input(f"PARADA {i+1}", placeholder="DENOMINACIÓN", value=st.session_state.dynamic_fields['names'][i], key=f"name_{i}")
 			with floors2:
 				st.session_state.dynamic_fields['distances'][i] = st.text_input(f"DISTANCIA {i+1}", value=st.session_state.dynamic_fields ['distances'][i],  placeholder="DISTANCIA", key=f"distance_{i}", label_visibility="hidden")
 			with floors3:
@@ -279,7 +295,7 @@ with st.container(border=True):
 		elif boarding == 2:
 			floors1, floors2, floors3, floors4, floors5 = st.columns([1,1,0.3,0.3,1])
 			with floors1:
-				st.session_state.dynamic_fields['names'][i] = st.text_input(f"NIVEL {i+1}", placeholder="DENOMINACIÓN", value=st.session_state.dynamic_fields['names'][i], key=f"name_{i}")
+				st.session_state.dynamic_fields['names'][i] = st.text_input(f"PARADA {i+1}", placeholder="DENOMINACIÓN", value=st.session_state.dynamic_fields['names'][i], key=f"name_{i}")
 			with floors2:
 				st.session_state.dynamic_fields['distances'][i] = st.text_input(f"DISTANCIA {i+1}", value=st.session_state.dynamic_fields ['distances'][i],  placeholder="DISTANCIA", key=f"distance_{i}", label_visibility="hidden")
 			with floors3:
@@ -303,7 +319,7 @@ with st.container(border=True):
 		elif boarding == 3:
 			floors1, floors2, floors3, floors4, floors5, floors6 = st.columns([1,1,0.3,0.3,0.3,1])
 			with floors1:
-				st.session_state.dynamic_fields['names'][i] = st.text_input(f"NIVEL {i+1}", placeholder="DENOMINACIÓN", value=st.session_state.dynamic_fields['names'][i], key=f"name_{i}")
+				st.session_state.dynamic_fields['names'][i] = st.text_input(f"PARADA {i+1}", placeholder="DENOMINACIÓN", value=st.session_state.dynamic_fields['names'][i], key=f"name_{i}")
 			with floors2:
 				st.session_state.dynamic_fields['distances'][i] = st.text_input(f"DISTANCIA {i+1}", value=st.session_state.dynamic_fields ['distances'][i],  placeholder="DISTANCIA", key=f"distance_{i}", label_visibility="hidden")
 			with floors3:
