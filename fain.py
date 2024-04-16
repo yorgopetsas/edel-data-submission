@@ -83,7 +83,12 @@ with st.container(border=True):
 		valves_type = st.selectbox(label=valves_type_l, options=valves_types)
 	with cols2:
 		if valves_type == valves_types[2]:
-			model = st.selectbox(label=valve_models_l, options=valve_models)
+			vol1, vol2 = st.columns(2)
+			with vol1:
+				model = st.selectbox(label=valve_models_l, options=valve_models)
+			if model == valve_models[3]:
+				with vol2:
+					other_valve_model = st.text_input(other_valve_l)	
 	colz1, colz2, colz3, colz4 = st.columns(4)
 	with colz1:
 		situation = st.selectbox(label=situation_l, options=situations)
@@ -288,7 +293,7 @@ with st.container(border=True):
 			with floors1:
 				st.session_state.dynamic_fields['names'][i] = st.text_input(f"PARADA {i+1}", placeholder="DENOMINACIÓN", value=st.session_state.dynamic_fields['names'][i], key=f"name_{i}")
 			with floors2:
-				st.session_state.dynamic_fields['distances'][i] = st.text_input(f"DISTANCIA {i+1}", value=st.session_state.dynamic_fields ['distances'][i],  placeholder="DISTANCIA", key=f"distance_{i}", label_visibility="hidden")
+				st.session_state.dynamic_fields['distances'][i] = st.text_input(f"DISTANCIA {i+1}", value=st.session_state.dynamic_fields ['distances'][i],  placeholder="DISTANCIA (mm)", key=f"distance_{i}", label_visibility="hidden")
 			with floors3:
 				st.image(f'{building_url}', width=159)
 		
@@ -297,7 +302,7 @@ with st.container(border=True):
 			with floors1:
 				st.session_state.dynamic_fields['names'][i] = st.text_input(f"PARADA {i+1}", placeholder="DENOMINACIÓN", value=st.session_state.dynamic_fields['names'][i], key=f"name_{i}")
 			with floors2:
-				st.session_state.dynamic_fields['distances'][i] = st.text_input(f"DISTANCIA {i+1}", value=st.session_state.dynamic_fields ['distances'][i],  placeholder="DISTANCIA", key=f"distance_{i}", label_visibility="hidden")
+				st.session_state.dynamic_fields['distances'][i] = st.text_input(f"DISTANCIA {i+1}", value=st.session_state.dynamic_fields ['distances'][i],  placeholder="DISTANCIA (mm)", key=f"distance_{i}", label_visibility="hidden")
 			with floors3:
 				st.write("")
 				st.write("")
@@ -321,7 +326,7 @@ with st.container(border=True):
 			with floors1:
 				st.session_state.dynamic_fields['names'][i] = st.text_input(f"PARADA {i+1}", placeholder="DENOMINACIÓN", value=st.session_state.dynamic_fields['names'][i], key=f"name_{i}")
 			with floors2:
-				st.session_state.dynamic_fields['distances'][i] = st.text_input(f"DISTANCIA {i+1}", value=st.session_state.dynamic_fields ['distances'][i],  placeholder="DISTANCIA", key=f"distance_{i}", label_visibility="hidden")
+				st.session_state.dynamic_fields['distances'][i] = st.text_input(f"DISTANCIA {i+1}", value=st.session_state.dynamic_fields ['distances'][i],  placeholder="DISTANCIA (mm)", key=f"distance_{i}", label_visibility="hidden")
 			with floors3:
 				st.write("")
 				st.write("")
@@ -395,6 +400,30 @@ with st.container(border=True):
 			pass
 		with huida6:
 			st.image(f'{foso_wide_url}', width=159)
+	
+	with st.container(border=True):
+		st.markdown("DISTANCIAS")
+		do1, do2, do3, do4, do5 = st.columns(5)
+		with do1:
+			dca = st.text_input("DCA", help="DISTANCIA DE CUADRO DE MANIOBRA AUTOMATICOS")
+		with do2:
+			dcl = st.text_input("DCL", help="DISTANCIA DE CUADRO DE MANIOBRA A LIMITADOR")
+		with do3:
+			dcfh = st.text_input("DCFH", help="DISTANCIA DE CUADRO DE MANIOBRA A FIJACION CUERDA MANIOBRA EN HUECO")
+		with do4:
+			dcb = st.text_input("DCB", help="DISTANCIA DE CUADRO DE MANIOBRA A BOTONERA")
+		with do5:
+			dcm = st.text_input("DCM", help="DISTANCIA DE CUADRO DE MANIOBRA A MAQUINA")
+		res = 0
+		for i in range(num_fields):
+			distance_value = st.session_state.dynamic_fields['distances'][i]
+			res += float(distance_value) if distance_value else 0
+		with st.container(border=True):
+			r1, r2 = st.columns([1,5])
+			with r1:
+				st.write(f"RECORRIDO")
+			with r2:
+				st.write(res)
 
 submit_button = st.button(label=submit_button_l)
 

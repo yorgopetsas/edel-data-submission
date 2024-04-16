@@ -41,6 +41,8 @@ other_address_l = "INTRODUCIR DIRECCIÓN COMPLETA:"
 cv_l = "CV"
 cvs = ["Elegir", "R00", "R02", "R02", "R03", "R05", "R06", "R07", "R11", "R14", "R15", "R17", "R22", "R31", "R33", "R39", "R40", "R43", "R52", "R54", "R59", "R59", "R68", "R70", "R71", "R76", "R79", "R80", "R81", "R83", "R86", "R87", "R89", "R90", "R94", "R95", "R97", "R98", "R99", "RA2", "RA4", "RA6", "RA7", "RA9", "RB1", "RB2", "RB3", "RB3", "RB3", "RB3", "RB3", "RB3", "RB4", "RB6", "RB8", "RB9", "RC1", "RC2", "RC3", "RC4", "RC6", "RC5", "RC7", "RC8", "RC9", "RD1", "RD2", "RD3", "RD5", "RD6", "RD7", "RD8", "RD9", "RE1", "RE2", "RE3", "RE4", "RE5", "RE6", "RE7", "RE8", "RE9", "RF1", "RF2", "RF3", "RF4", "RF5", "RF6", "RF7", "RF8", "RF9", "RG1", "RG2", "RG3", "RG4", "RG5", "RG6", "RG7", "RG8", "RG9", "RH1", "RH2", "RH3", "RH4", "RH5", "RH6", "RH7", "RH8", "RH9", "RI0", "RI1", "RI2", "RI3", "RI3", "RI3", "RI6", "RI5", "RI9", "RI8", "RJ2", "RJ3", "RJ6", "RJ4", "BE01", "FA06", "IR01"]
 
+other_valve_l = "OTRO MODELO"
+
 reference_l="NUMERO DE ORDEN (SAP)"
 date_l="FECHA PEDIDO"
 delivery_date_l="ENTREGA EN:"
