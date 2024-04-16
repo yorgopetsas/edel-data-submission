@@ -5,7 +5,7 @@ with open('./new.css') as f:
     css = f.read()
 
 st.markdown(f'<style>{css}</style>', unsafe_allow_html=True)
-	
+
 def render_selectbox(field_options, field_value, field_label):
 	selected_value = st.selectbox(label=f"**{field_label}**", options=field_options, index=field_options.index(st.session_state.get(field_value, field_options[0])))
 
@@ -29,7 +29,6 @@ with st.container(border=True):
 			delivery_date = st.date_input(label=delivery_date_l)
 		with col4:
 			date = st.date_input(label=date_l)
-
 	comments = st.text_area(comments_l, key='comments')	
 
 #Datos Generales
@@ -49,10 +48,7 @@ with st.container(border=True):
 		man_type = st.selectbox(label=man_type_l, options=man_types)
 		# secuencia = st.text_input(label=secuencia_l)
 		connection = st.selectbox(label=connection_l, options=connections)
-	# with col4:
-	
 	norm = st.selectbox(label=norm_l, options=norms)
-
 	#Aqui puedo mejorar haciendo que pida / proponga secuencia segun el numero de paradas
 
 with st.container(border=True):
@@ -87,9 +83,9 @@ with st.container(border=True):
 		neutral = st.selectbox(label=neutral_l, options=neutrals)
 
 with st.container(border=True):
-	st.write(f"**{cabin_door_l}**")
 	col1, col2, col3 = st.columns(3)
 	with col1:
+		st.write(f"**{cabin_door_l}**")
 		operator_type = st.selectbox(label=operator_type_l, options=operator_types)
 		manufacturer = st.text_input(label=manufacturer_l)
 		door_model = st.selectbox(label=door_model_l, options=door_models)
@@ -99,37 +95,72 @@ with st.container(border=True):
 			leva = st.selectbox(label=leva_l, options=levas)
 		with coz2:
 			current_door = st.text_input(label=current_door_l)
-
 		with st.container(border=True):
 			floor_door = st.selectbox(label=floor_door_l, options=floor_doors)
+
 	if boarding > 1:
 		with col2:
-			operator_type2 = st.selectbox(label=operator_type_l2, options=operator_types)
-			manufacturer2 = st.text_input(label=manufacturer_l2)
-			door_model2 = st.selectbox(label=door_model_l2, options=door_models)
-			consumo_door_motor2 = st.text_input(label=consumo_door_motor_l2)
-			coz1, coz2 = st.columns(2)
-			with coz1:
-				leva2 = st.selectbox(label=leva_l2, options=levas)
-			with coz2:
-				current_door2 = st.text_input(label=current_door_l2)
-
-			with st.container(border=True):
-				floor_door2 = st.selectbox(label=floor_door_l2, options=floor_doors)
+			puerta_doz = st.toggle('Copiar Puerta Uno')
+			if puerta_doz:
+				oposition = find_index(operator_types, operator_type)
+				operator_type2 = st.selectbox(label=operator_type_l2, options=operator_types, index=oposition)
+				manufacturer2 = st.text_input(label=manufacturer_l2, value=manufacturer)
+				odoor_model = find_index(door_models, door_model)
+				door_model2 = st.selectbox(label=door_model_l2, options=door_models, index=odoor_model)
+				consumo_door_motor2 = st.text_input(label=consumo_door_motor_l2, value=consumo_door_motor)
+				coz1, coz2 = st.columns(2)
+				with coz1:
+					oleva = find_index(levas, leva)
+					leva2 = st.selectbox(label=leva_l2, options=levas, index=oleva)
+				with coz2:
+					current_door2 = st.text_input(label=current_door_l2, value=current_door)
+				with st.container(border=True):
+					ofloor = find_index(floor_doors, floor_door)
+					floor_door2 = st.selectbox(label=floor_door_l2, options=floor_doors, index=ofloor)
+			else:
+				operator_type2 = st.selectbox(label=operator_type_l2, options=operator_types)
+				manufacturer2 = st.text_input(label=manufacturer_l2)
+				door_model2 = st.selectbox(label=door_model_l2, options=door_models)
+				consumo_door_motor2 = st.text_input(label=consumo_door_motor_l2)
+				coz1, coz2 = st.columns(2)
+				with coz1:
+					oleva = find_index(floor_doors, floor_door)
+					leva2 = st.selectbox(label=leva_l2, options=levas, index=oleva)
+				with coz2:
+					current_door2 = st.text_input(label=current_door_l2)
+				with st.container(border=True):
+					floor_door2 = st.selectbox(label=floor_door_l2, options=floor_doors)
 	if boarding > 2:
 		with col3:
-			operator_type3 = st.selectbox(label=operator_type_l3, options=operator_types)
-			manufacturer3 = st.text_input(label=manufacturer_l3)
-			door_model3 = st.selectbox(label=door_model_l3, options=door_models)
-			consumo_door_motor3 = st.text_input(label=consumo_door_motor_l3)
-			coz1, coz2 = st.columns(2)
-			with coz1:
-				leva3 = st.selectbox(label=leva_l3, options=levas)
-			with coz2:
-				current_door3 = st.text_input(label=current_door_l3)
-
-			with st.container(border=True):
-				floor_door3 = st.selectbox(label=floor_door_l3, options=floor_doors)
+			puerta_trez = st.toggle('Copiar Puerta Dos')
+			if puerta_trez:
+				oposition3 = find_index(operator_types, operator_type2)
+				operator_type3 = st.selectbox(label=operator_type_l3, options=operator_types, index=oposition3)
+				manufacturer3 = st.text_input(label=manufacturer_l3, value=manufacturer)
+				odoor_model2 = find_index(door_models, door_model2)
+				door_model3 = st.selectbox(label=door_model_l3, options=door_models, index=odoor_model2)
+				consumo_door_motor3 = st.text_input(label=consumo_door_motor_l3, value=consumo_door_motor)
+				coz1, coz2 = st.columns(2)
+				with coz1:
+					oleva2 = find_index(levas, leva2)
+					leva3 = st.selectbox(label=leva_l3, options=levas, index=oleva2)
+				with coz2:
+					current_door3 = st.text_input(label=current_door_l3, value=current_door)
+				with st.container(border=True):
+					ofloor2 = find_index(floor_doors, floor_door2)
+					floor_door3 = st.selectbox(label=floor_door_l3, options=floor_doors, index=ofloor2)
+			else:
+				operator_type3 = st.selectbox(label=operator_type_l3, options=operator_types)
+				manufacturer3 = st.text_input(label=manufacturer_l3)
+				door_model3 = st.selectbox(label=door_model_l3, options=door_models)
+				consumo_door_motor3 = st.text_input(label=consumo_door_motor_l3)
+				coz1, coz2 = st.columns(2)
+				with coz1:
+					leva3 = st.selectbox(label=leva_l3, options=levas)
+				with coz2:
+					current_door3 = st.text_input(label=current_door_l3)
+				with st.container(border=True):
+					floor_door3 = st.selectbox(label=floor_door_l3, options=floor_doors)
 
 with st.container(border=True):
 	st.write(f"**{cabin_l}**")
@@ -152,7 +183,6 @@ with st.container(border=True):
 		gong_1 = st.checkbox(gong_1_l)
 		flechas = st.checkbox(flechas_l)
 		weight = st.selectbox(label=weight_l, options=weights)
-
 	st.divider()
 	limitator = st.selectbox(label=limitator_l, options=limitators)
 	xol1, xol2 = st.columns(2)
@@ -166,7 +196,6 @@ with st.container(border=True):
 		foso = st.checkbox(label=foso_l)
 	with zol2:
 		huida = st.checkbox(label=huida_l)
-
 
 with st.container(border=True):
 
@@ -182,9 +211,11 @@ with st.container(border=True):
 				st.session_state.dynamic_fields[key] = st.session_state.dynamic_fields[key][:num_fields]
 
 	st.markdown(heights_title_l)
-	stops = st.number_input(label="PARADAS", min_value=0, max_value=32, value=stops)
-	# stops = st.number_input(label="PARADAS", min_value=0, max_value=32, value=st.session_state.stops, key="stops2")
-	# st.session_state.stops = stops
+	altitudes1, altitudes2 = st.columns([1,1])
+	with altitudes1:
+		stops = st.number_input(label="PARADAS", min_value=0, max_value=32, value=stops)
+	with altitudes2:
+		boarding = st.number_input(label="EMBARQUE", min_value=1, max_value=3, value=boarding)
 	
 	num_fields = int(stops)
 	if 'dynamic_fields' not in st.session_state:
@@ -351,7 +382,7 @@ with st.container(border=True):
 
 submit_button = st.button(label=submit_button_l)
 
-	# 		comments_h = st.text_area(comments_heights_l, key='comments_h')
+# comments_h = st.text_area(comments_heights_l, key='comments_h')
 
 # import pandas as pd
 # from io import StringIO

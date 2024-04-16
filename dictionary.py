@@ -1,3 +1,9 @@
+def find_index(types, type):
+				for i, item in enumerate(types):
+					if item == type:
+						position = i
+						return position
+					
 general_cointainer_label = "Información General"
 
 # URLs
