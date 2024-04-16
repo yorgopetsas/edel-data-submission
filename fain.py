@@ -27,6 +27,10 @@ with st.container(border=True):
 		cv = st.selectbox(label=cv_l, options=cvs)
 	with col3:
 		delivery = st.selectbox(label=delivery_l, options=deliveries)
+
+	if delivery == deliveries[3]:
+			other_address = st.text_input(other_address_l, key='other_address')
+
 	zcol1, zcol2, zcol3  = st.columns(3)
 	with zcol1:
 		date = st.date_input(label=date_l)
@@ -42,9 +46,7 @@ with st.container(border=True):
 		else: 
 			delivery_date = st.date_input(label=delivery_date_l)
 
-
-	if delivery == deliveries[3]:
-			other_address = st.text_input(other_address_l, key='other_address')	
+	
 
 	comments = st.text_area(comments_l, key='comments')	
 
