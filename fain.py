@@ -84,7 +84,8 @@ with st.container(border=True):
 			encoder_type = st.selectbox(label=encoder_type_l, options=encoder_types)
 	cols1, cols2 = st.columns(2)
 	with cols1:
-		valves_type = st.selectbox(label=valves_type_l, options=valves_types)
+		if man_type == man_types[3]:
+			valves_type = st.selectbox(label=valves_type_l, options=valves_types)
 	with cols2:
 		if valves_type == valves_types[2]:
 			vol1, vol2 = st.columns(2)
