@@ -37,7 +37,7 @@ roof_cp_url = "img/roof-cp.png"
 
 building_active_url = "building-active.png"
 
-delivery_l = "LUGAR DE ENREGA"
+delivery_l = "LUGAR DE ENTREGA"
 deliveries = ["Elegir", "Madrid", "Barcelona", "Otro..."]
 other_address_l = "INTRODUCIR DIRECCIÓN COMPLETA:"
 

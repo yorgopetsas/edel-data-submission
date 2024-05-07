@@ -75,7 +75,9 @@ with st.container(border=True):
 	st.write(f"**{central_l}**")
 	col1, col2 = st.columns(2)
 	with col1:
-		if man_type == man_types[1] or man_type == man_types[2]:
+		if man_type == man_types[1]:
+			encoder_type = st.selectbox(label=encoder_type_l, options=encoder_types)
+		elif man_type == man_types[1] or man_type == man_types[2]:
 			machine_type = st.selectbox(label=machine_type_l, options=machine_types_a)
 		elif man_type == man_types[3]:
 			machine_type = st.selectbox(label=machine_type_l, options=machine_types_h)
